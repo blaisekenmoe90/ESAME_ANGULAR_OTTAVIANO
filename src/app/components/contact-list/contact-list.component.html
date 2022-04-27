@@ -1,0 +1,35 @@
+<!-- contacts service-->
+<!--
+
+<button class="btn btn-dark" (click)="getAllContacts()">getAllContacts</button>
+<button class="btn btn-dark" (click)="getOneContact()">getOneContact</button>
+<div>
+    <input type="text" [(ngModel)]="contact.message">
+    <button (click)="updateContacts()">insertNewContact</button>
+</div>
+-->
+<!-- message service  -->
+<!--
+<button (click)="getAllMessages()">getAllMessages</button>
+<button (click)="getOneAnswer()">getOneAnswer</button>
+<button (click)="addNewMessage()">addMessage</button> -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand ms-3" href="#">Contacts list</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    </div>
+
+    <div>
+        <button class="btn btn-dark m-3" routerLink="/menu">Back to menu</button>
+    </div>
+</nav>
+
+<!-- contatti -->
+
+<div *ngIf="contacts" style="display: flex; gap: 1em; flex-direction: column;">
+    <div *ngFor="let contact of contacts">
+        <app-contact-item [contact]="contact"></app-contact-item>
+    </div>
+</div>

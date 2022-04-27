@@ -1,0 +1,8 @@
+<div class="d-flex" style="gap:1em; flex-direction: column;" *ngIf="contact">
+    <div class="singleContact d-flex col-12" style="flex-direction: column">
+        <img src="{{contact.imageUrl}}">
+        <div class="d-flex col-1">
+            <p style="text-align: center;" class="col-12 mt-1">{{contact.firstname + contact.id}}</p>
+        </div>
+    </div>
+</div>
