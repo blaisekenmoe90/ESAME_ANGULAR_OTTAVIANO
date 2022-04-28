@@ -1,1 +1,12 @@
-<p>message-item works!</p>
+<!-- se contact non è null -->
+<div class="d-flex" style="flex-basis: 40%" *ngIf="contact">
+    <div class="singleContact col-8 offset-2 d-flex justify-content-center">
+        <!-- questo contact si riferisce a quello del .ts di questo componente,
+            che a sua volta si riferisce all'ngFor del contact-list.component.html -->
+        <img [routerLink]="['/whatsapp', contact.id]" src="{{contact.imageUrl}}">
+
+        <div>
+            <p style="text-align: center; font-size: 1.2em" class="col-12 mt-4">{{contact.firstname + ' ' + contact.lastname}}</p>
+        </div>
+    </div>
+</div>

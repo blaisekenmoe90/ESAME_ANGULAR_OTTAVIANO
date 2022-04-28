@@ -16,7 +16,7 @@ export class MessageServiceService {
   }
 
   getRandomMessage():Observable<Answer>{
-    return this.http.get<Answer>('api/messages/' + (Math.floor(Math.random()* 20)+1));
+    return this.http.get<Answer>('api/messages/' + (Math.floor(Math.random()* 46)+1));
   }
 
   addMessage(message: Message):Observable<Message>{

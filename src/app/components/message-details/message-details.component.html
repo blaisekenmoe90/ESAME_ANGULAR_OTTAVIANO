@@ -1,1 +1,11 @@
-<p>message-details works!</p>
+<!-- NAVBAR -->
+<div class="col-12" style="background-color: #202020;">
+    <nav class="navbar container" style="height: 7em;">
+        <a class="navbar-brand ms-5 text-light" style="font-size: 1.5em"><i class="bi bi-person-fill"></i> {{contact.firstname + ' ' + contact.lastname}}  </a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        </div>
+        <div>
+            <button class="btn btn-dark me-5" routerLink="/menu" style="background-color:#FF4C29; border-radius:10px" (click)="goBack()"><i class="bi bi-arrow-left"></i> Back to message list</button>
+        </div>
+    </nav>
+</div>

@@ -1,8 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Contact } from 'src/app/interfaces/contact';
-import { ContactServiceService } from 'src/app/services/contactService/contact-service.service';
-import { ContactListComponent } from '../contact-list/contact-list.component';
 
 @Component({
   selector: 'app-contact-item',
@@ -10,12 +7,15 @@ import { ContactListComponent } from '../contact-list/contact-list.component';
   styleUrls: ['./contact-item.component.scss']
 })
 export class ContactItemComponent implements OnInit {
- @Input() contact?: Contact; 
-  contacts: Contact[] = [];
   
-  constructor(private contactService: ContactServiceService, private http:HttpClient) { }
+  // questa è la variabile a cui si riferisce il property binding del 
+  // contact-list.component.html 
+  @Input() contact!: Contact;
+    
+  constructor() { }
 
   ngOnInit(): void {
+    console.log(this.contact?.firstname)
   }
 
 }

@@ -1,1 +1,48 @@
-<p>contact-detail works!</p>
+<!-- NAVBAR -->
+<div class="col-12" style="background-color: #202020;">
+    <nav class="navbar container" style="height: 7em;">
+        <a class="navbar-brand ms-5 text-light" style="font-size: 1.5em">Contacts details <i class="bi bi-search" style="font-size:0.8em"></i> </a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        </div>
+        <div>
+            <button class="btn btn-dark me-5" routerLink="/menu" style="background-color:#FF4C29; border-radius:10px" (click)="goBack()"><i class="bi bi-arrow-left"></i> Back to contacts list</button>
+        </div>
+    </nav>
+</div>
+
+<div style="height:100%; padding:5em 0em; background-color: #151515">
+    <div id="detailsBox" class="col-8 offset-2 text-light d-flex">
+        <div class="d-flex justify-content-center">
+            <img src="{{contact.imageUrl}}" style="background-color: #FF4C29; border-radius: 50%;">
+        </div>
+        <div id="profilePic" class="d-flex justify-content-center col-4 offset-4">
+            <h1>{{contact.firstname}}</h1>
+            <h1>{{contact.lastname}}</h1>
+        </div>
+        <div class="d-flex" style="flex-direction: column; gap:2em">
+            <div class="d-flex justify-content-center">
+                <h1>id: {{contact.id}}</h1>
+            </div>
+            <div class="d-flex align-items-center justify-content-center col-12" style="gap:2em; flex-direction: column">
+                <div class="d-flex justify-content-center align-items-center col-12" style="flex-direction: column;">
+                    <p class="col-2" style="text-align: center; font-size:1.5em">Edit first name</p>
+                    <input type="text" [(ngModel)]="contact.firstname">
+                </div>
+                <div class="d-flex justify-content-center align-items-center col-12" style="flex-direction: column;">
+                    <p class="col-2" style="text-align: center; font-size:1.5em">Edit last name</p>
+                    <input type="text" [(ngModel)]="contact.lastname">
+                </div>
+                <div class="d-flex justify-content-center align-items-center col-12" style="flex-direction: column;">
+                    <p class="col-2" style="text-align: center; font-size:1.5em">Edit email</p>
+                    <input type="text" [(ngModel)]="contact.email">
+                </div>
+                <div class="d-flex justify-content-center align-items-center col-12" style="flex-direction: column;">
+                    <p class="col-3" style="text-align: center; font-size:1.5em">Edit type of contact</p>
+                    <input type="text" [(ngModel)]="contact.type">
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mt-5">
+                <button class="btn text-light" style="font-size:1.3em; border-radius: 10px; background-color: #FF4C29" (click)="updateContactDetails()">Save changes</button>
+            </div>
+        </div>
+    </div>

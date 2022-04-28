@@ -13,13 +13,11 @@ export class ContactServiceService {
   getContacts():Observable<Contact[]>{
     return this.http.get<Contact[]>('api/contacts')
   } 
-  getContacts2(id:number):Observable<Contact[]>{
-    return this.http.get<Contact[]>('api/contacts/' + id)
+  getContact(id:number):Observable<Contact>{
+    return this.http.get<Contact>('api/contacts/' + id)
   }
 
   updateContact(contact:Contact):Observable<Contact[]>{
     return this.http.put<Contact[]>('api/contacts', contact);
   }
-
-  
 }

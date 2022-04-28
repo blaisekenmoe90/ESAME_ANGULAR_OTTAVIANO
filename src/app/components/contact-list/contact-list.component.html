@@ -13,23 +13,29 @@
 <button (click)="getAllMessages()">getAllMessages</button>
 <button (click)="getOneAnswer()">getOneAnswer</button>
 <button (click)="addNewMessage()">addMessage</button> -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand ms-3" href="#">Contacts list</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    </div>
 
-    <div>
-        <button class="btn btn-dark m-3" routerLink="/menu">Back to menu</button>
-    </div>
-</nav>
+<!-- NAVBAR -->
+<div class="col-12" style="background-color: #202020;">
+    <nav class="navbar container" style="height: 7em;">
+        <a class="navbar-brand ms-5 text-light" style="font-size: 1.5em">Rubrica <i class="bi bi-book"></i></a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        </div>
+        <div>
+            <button class="btn btn-dark me-5" style="background-color: #FF4C29" routerLink="/menu">Back to menu</button>
+        </div>
+    </nav>
+</div>
+
 
 <!-- contatti -->
-
-<div *ngIf="contacts" style="display: flex; gap: 1em; flex-direction: column;">
-    <div *ngFor="let contact of contacts">
+<!-- se l'array contacts esiste -->
+<div *ngIf="contacts" style="display: flex; flex-wrap: wrap; gap: 2em; justify-content: center; background-color: #082032; padding: 5em 0em">
+    <div *ngFor="let contact of contacts" style="flex-basis: 20%">
+        <!-- la variabile [contact] corrisponde alla variabile che nel .ts dell'app-contact-item
+        è segnata con il decoratore @Input(), la variabile "contact" invece corrisponde a quella 
+        inizializzata nell'*ngFor -->
+        <!-- in pratica questa riga dice "inserisci il contact dell'ngFor nella variabile contact 
+            del .ts del componente app-contact-item" -->
         <app-contact-item [contact]="contact"></app-contact-item>
     </div>
 </div>

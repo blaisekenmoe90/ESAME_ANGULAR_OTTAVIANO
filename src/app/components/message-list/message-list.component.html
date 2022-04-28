@@ -1,1 +1,24 @@
-<p>message-list works!</p>
+<div class="col-12" style="background-color: #202020;">
+    <nav class="navbar container" style="height: 7em;">
+        <a class="navbar-brand ms-5 text-light" style="font-size: 1.5em;">Whatsapp <i class="bi bi-whatsapp"></i></a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        </div>
+        <div>
+            <button class="btn btn-dark me-5" style="background-color: #FF4C29" routerLink="/menu">Back to menu</button>
+        </div>
+    </nav>
+</div>
+
+
+<!-- contatti -->
+<!-- se l'array contacts esiste -->
+<div *ngIf="contacts" style="display: flex; flex-wrap: wrap; gap: 2em; justify-content: center; background-color: #082032; padding: 5em 0em">
+    <div *ngFor="let contact of contacts" style="flex-basis: 20%">
+        <!-- la variabile [contact] corrisponde alla variabile che nel .ts dell'app-contact-item
+        è segnata con il decoratore @Input(), la variabile "contact" invece corrisponde a quella 
+        inizializzata nell'*ngFor -->
+        <!-- in pratica questa riga dice "inserisci il contact dell'ngFor nella variabile contact 
+            del .ts del componente app-contact-item" -->
+        <app-message-item [contact]="contact"></app-message-item>
+    </div>
+</div>

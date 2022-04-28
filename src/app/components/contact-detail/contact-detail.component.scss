@@ -1,0 +1,28 @@
+input {
+    width: 30%;
+    height: 3em;
+    border: none;
+    border-radius: 10px;
+    padding: 0em 1em;
+}
+
+#detailsBox {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    flex-direction: column;
+    gap: 2em;
+    background-color: #202020;
+    padding: 5em 0em;
+}
+
+#profilePic {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    gap: 1em;
+    border-radius: 10px;
+    color: #cacaca;
+    background-color: #282828;
+    padding: 0.5em 0em;
+}
+
+img {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}

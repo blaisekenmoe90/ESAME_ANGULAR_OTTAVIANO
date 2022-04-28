@@ -12,8 +12,6 @@ import { Message} from 'src/app/interfaces/message'
   styleUrls: ['./contact-list.component.scss']
 })
 export class ContactListComponent implements OnInit {
-
-
   
   // contact: Contact = {
   //   id: 2342, 
@@ -33,13 +31,13 @@ export class ContactListComponent implements OnInit {
 
   contacts: Contact[] = [];
 
-  constructor(private contactService: ContactServiceService, private messageService: MessageServiceService, private http:HttpClient) { }
+  constructor(private contactService: ContactServiceService, private messageService: MessageServiceService) { }
 
   ngOnInit(): void {
     this.getAllContacts();
   }
 
-  // metodi del contact-service
+  // METODI DEL CONTACT SERVICE
 
   getAllContacts(){
     this.contactService.getContacts().subscribe(data => {
@@ -49,7 +47,7 @@ export class ContactListComponent implements OnInit {
   }
 
   getOneContact(){
-    this.contactService.getContacts2(6).subscribe(data => {
+    this.contactService.getContact(6).subscribe(data => {
       console.log(data);
     })
   }
@@ -61,7 +59,7 @@ export class ContactListComponent implements OnInit {
   //   this.getAllContacts();
   // }
 
-  // metodi del message-services
+  // METODI DEL MESSAGE SERVICE
 
   getAllMessages(){
     this.messageService.getMessages().subscribe(data => {
