@@ -1,0 +1,22 @@
+.outcoming {
+    // background-color: blue;
+    justify-content: flex-end;
+    // align-self: flex-end;
+}
+
+.incoming {
+    // background-color: red;
+    justify-content: flex-start;
+    // align-self: start;
+}
+
+.greyIn {
+    background-color: #ff5b3a;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+.greyOut {
+    background-color: rgb(221, 221, 221);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}

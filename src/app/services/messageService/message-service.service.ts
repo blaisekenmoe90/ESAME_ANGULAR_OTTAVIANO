@@ -15,8 +15,12 @@ export class MessageServiceService {
     return this.http.get<Message[]>('api/messages');
   }
 
+  getMessage(userId:number):Observable<Message[]>{
+    return this.http.get<Message[]>('api/messages/' + userId);
+  }
+
   getRandomMessage():Observable<Answer>{
-    return this.http.get<Answer>('api/messages/' + (Math.floor(Math.random()* 46)+1));
+    return this.http.get<Answer>('api/messages/' + (Math.floor(Math.random()* 45)+1));
   }
 
   addMessage(message: Message):Observable<Message>{
