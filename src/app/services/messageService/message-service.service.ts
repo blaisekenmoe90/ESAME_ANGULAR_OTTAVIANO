@@ -24,7 +24,7 @@ export class MessageServiceService {
   }
 
   addMessage(message: Message):Observable<Message>{
-    return this.http.put<Message>('api/messages', message)
+    return this.http.post<Message>('api/messages', message)
   }
 
 }

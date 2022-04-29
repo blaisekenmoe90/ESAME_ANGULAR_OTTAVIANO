@@ -16,7 +16,6 @@ export class MessageDetailsComponent implements OnInit {
   messageToAdd: string = "";
   messages:Message[] = [];
   contact!:Contact;
-  counter: number = this.messages.length;
   @Input() id: number = Number(this.activatedRoute.snapshot.params['userId']); // preleva il valore userId dall'url, lo casta a number e lo salva nella varabile id
 
   constructor(
@@ -34,7 +33,6 @@ export class MessageDetailsComponent implements OnInit {
     // ottiene tutti i messaggi dal message service
     this.getMessages();
 
-    console.log(this.counter)
     console.log(this.messages)
   }  
 
@@ -63,7 +61,6 @@ export class MessageDetailsComponent implements OnInit {
  
    add(text: string){
      let message : Message = {
-       id:this.counter,
        userId: this.id,
        type: 'outcoming',
        message: text,
@@ -71,7 +68,7 @@ export class MessageDetailsComponent implements OnInit {
      } as Message;
      this.messageService.addMessage(message).subscribe(data=>{
        this.messages.push(message);
-       this.counter++;
+       console.log(message)
      })
    }
 }

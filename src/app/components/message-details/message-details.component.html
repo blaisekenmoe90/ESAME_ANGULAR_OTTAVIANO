@@ -1,27 +1,38 @@
 <!-- NAVBAR -->
-<div class="col-12" style="background-color: #202020;">
+<div class="col-12" style="background-color: #202020;position:fixed; top:0">
     <nav class="navbar container" style="height: 7em;">
-        <a class="navbar-brand ms-5 text-light" style="font-size: 1.5em"><i class="bi bi-person-fill"></i> {{contact.firstname + ' ' + contact.lastname}}  </a>
+        <a class="navbar-brand ms-5 text-light" style="font-size: 1.5em"><i
+                class="bi bi-person-fill"></i> {{contact.firstname + ' ' +
+            contact.lastname}} </a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
         </div>
         <div>
-            <button class="btn btn-dark me-5" routerLink="/menu" style="background-color:#FF4C29; border-radius:10px" (click)="goBack()"><i class="bi bi-arrow-left"></i> Back to message list</button>
+            <button class="btn btn-dark me-5" routerLink="/menu" style="background-color:#FF4C29; border-radius:10px" (click)="goBack()"><i class="bi bi-arrow-left"></i> Back to
+                message list</button>
         </div>
     </nav>
 </div>
 
 <!-- CHAT -->
-<div style="background-color: #252525; padding: 5em 0em; display: flex; gap:2em; flex-direction: column;">
+<div style="background-color: #252525; padding-top: 5em; display: flex; gap:2em;
+    flex-direction: column; margin-top:7em; padding-bottom: 100%;">
     <!-- [class.outcoming]="element.type=='outcoming'" -- significa:"attiva la classe .outcoming se element.type è == a outcoming" -->
-    <div *ngFor="let element of messages" class="d-flex col-8 offset-2" [class.outcoming]="element.type=='incoming'" [class.outcoming]="element.type=='outcoming'">
-        <div [class.greyIn]="element.type=='incoming'" [class.greyOut]="element.type=='outcoming'" style="height: 5em; align-items:center; justify-content:center; border-radius: 10px" class="d-flex col-3 mx-5 ">
-            {{ element.message}}
+    <div *ngFor="let element of messages" class="d-flex col-8 offset-2" [class.outcoming]="element.type=='outcoming'">
+
+
+
+        <div [class.greyIn]="element.type=='incoming'" [class.greyOut]="element.type=='outcoming'" style="height: 5em;
+            align-items:center; justify-content:center; border-radius: 10px;" class="d-flex
+            col-3">
+            {{element.message}}
         </div>
     </div>
+</div>
 
-    <!-- SEND MESSAGE -->
-    <div class="d-flex justify-content-center">
-        <input type="text" #newMessage>
-        <button class="btn btn-primary" placeholder="send a message" (click)="add(newMessage.value); newMessage.value=''">Invia</button>
-    </div>
+<!-- SEND MESSAGE -->
+<div class="d-flex container-fluid justify-content-center py-5" style="gap:2em;background-color: #202020; position:fixed; bottom:0">
+    <input type="text" #newMessage class="col-4 px-5" style="padding:0.7em
+            1em; border:none; border-radius:10px" (keydown.enter)="add(newMessage.value)" (keyup.enter)="newMessage.value= ''" placeholder="Send a message">
+    <button class="btn btn-primary px-3" style="border-radius:10px" placeholder="send a message" (click)="add(newMessage.value);
+            newMessage.value=''"><i class="bi bi-send-fill"></i></button>
 </div>
