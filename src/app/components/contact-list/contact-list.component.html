@@ -17,25 +17,36 @@
 <!-- NAVBAR -->
 <div class="col-12" style="background-color: #202020;">
     <nav class="navbar container" style="height: 7em;">
+
+        <div>
+            <button class="btn btn-dark me-5" style="background-color: #FF4C29" routerLink="/menu">Back to menu</button>
+        </div>
+
+
         <a class="navbar-brand ms-5 text-light" style="font-size: 1.5em">Rubrica <i class="bi bi-book"></i></a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
         </div>
-        <div>
-            <button class="btn btn-dark me-5" style="background-color: #FF4C29" routerLink="/menu">Back to menu</button>
+
+
+        <div class="d-flex">
+            <button class="m-auto btn btn-primary " routerLink="/contact/0">Add new contact</button>
         </div>
     </nav>
 </div>
 
 
-<!-- contatti -->
-<!-- se l'array contacts esiste -->
-<div *ngIf="contacts" style="display: flex; flex-wrap: wrap; gap: 2em; justify-content: center; background-color: #082032; padding: 5em 0em">
-    <div *ngFor="let contact of contacts" style="flex-basis: 20%">
-        <!-- la variabile [contact] corrisponde alla variabile che nel .ts dell'app-contact-item
+<div style="background: rgb(18,73,115);
+background: linear-gradient(90deg, rgba(18,73,115,1) 40%, rgba(255,76,41,1) 100%);">
+    <!-- contatti -->
+    <!-- se l'array contacts esiste -->
+    <div *ngIf="contacts" style="display: flex; flex-wrap: wrap; gap: 2em; justify-content: center;padding: 5em 0em">
+        <div *ngFor="let contact of contacts" style="flex-basis: 20%">
+            <!-- la variabile [contact] corrisponde alla variabile che nel .ts dell'app-contact-item
         è segnata con il decoratore @Input(), la variabile "contact" invece corrisponde a quella 
         inizializzata nell'*ngFor -->
-        <!-- in pratica questa riga dice "inserisci il contact dell'ngFor nella variabile contact 
+            <!-- in pratica questa riga dice "inserisci il contact dell'ngFor nella variabile contact 
             del .ts del componente app-contact-item" -->
-        <app-contact-item [contact]="contact"></app-contact-item>
+            <app-contact-item [contact]="contact"></app-contact-item>
+        </div>
     </div>
 </div>

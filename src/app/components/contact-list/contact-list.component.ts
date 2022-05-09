@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { Contact } from 'src/app/interfaces/contact';
 import { MessageServiceService } from 'src/app/services/messageService/message-service.service';
 import { Message} from 'src/app/interfaces/message'
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-contact-list',
@@ -12,15 +13,6 @@ import { Message} from 'src/app/interfaces/message'
   styleUrls: ['./contact-list.component.scss']
 })
 export class ContactListComponent implements OnInit {
-  
-  // contact: Contact = {
-  //   id: 2342, 
-  //   firstname: 'test', 
-  //   lastname: 'test', 
-  //   email: 'test', 
-  //   type: 'test', 
-  //   imageUrl: 'test'
-  // }
 
   message: Message = {
     id: 27364,
@@ -30,8 +22,9 @@ export class ContactListComponent implements OnInit {
   }
 
   contacts: Contact[] = [];
+  @Input() id: number = Number(this.activatedRoute.snapshot.params['id']); // preleva il valore id dall'url e lo salva nella varabile id
 
-  constructor(private contactService: ContactServiceService, private messageService: MessageServiceService) { }
+  constructor(private contactService: ContactServiceService, private messageService: MessageServiceService, private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getAllContacts();
@@ -42,34 +35,18 @@ export class ContactListComponent implements OnInit {
   getAllContacts(){
     this.contactService.getContacts().subscribe(data => {
       this.contacts = data;
-      console.log(this.contacts);
     });
   }
-
-  getOneContact(){
-    this.contactService.getContact(6).subscribe(data => {
-      console.log(data);
-    })
-  }
-
-  // updateContacts(){
-  //   this.contactService.updateContact(this.contact)
-  //       .subscribe(data =>{    
-  //       });
-  //   this.getAllContacts();
-  // }
 
   // METODI DEL MESSAGE SERVICE
 
   getAllMessages(){
     this.messageService.getMessages().subscribe(data => {
-      console.log(data);
     })
   }
 
   getOneAnswer(){
     this.messageService.getRandomMessage().subscribe(data => {
-      console.log(data);
     })
   }
 

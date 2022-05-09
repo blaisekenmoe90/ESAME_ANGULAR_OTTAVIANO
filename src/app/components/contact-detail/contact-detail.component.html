@@ -5,7 +5,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
         </div>
         <div>
-            <button class="btn btn-dark me-5" routerLink="/menu" style="background-color:#FF4C29; border-radius:10px" (click)="goBack()"><i class="bi bi-arrow-left"></i> Back to contacts list</button>
+            <button class="shrink btn btn-dark me-5" routerLink="/menu" style="background-color:#FF4C29; border-radius:10px" (click)="goBack()"><i class="bi bi-arrow-left"></i> Back to contacts list</button>
         </div>
     </nav>
 </div>
@@ -26,23 +26,33 @@
             <div class="d-flex align-items-center justify-content-center col-12" style="gap:2em; flex-direction: column">
                 <div class="d-flex justify-content-center align-items-center col-12" style="flex-direction: column;">
                     <p class="col-2" style="text-align: center; font-size:1.5em">Edit first name</p>
-                    <input type="text" [(ngModel)]="contact.firstname">
+                    <input type="text" [(ngModel)]="contact.firstname" #firstname>
                 </div>
                 <div class="d-flex justify-content-center align-items-center col-12" style="flex-direction: column;">
                     <p class="col-2" style="text-align: center; font-size:1.5em">Edit last name</p>
-                    <input type="text" [(ngModel)]="contact.lastname">
+                    <input type="text" [(ngModel)]="contact.lastname" #lastname>
                 </div>
                 <div class="d-flex justify-content-center align-items-center col-12" style="flex-direction: column;">
                     <p class="col-2" style="text-align: center; font-size:1.5em">Edit email</p>
-                    <input type="text" [(ngModel)]="contact.email">
+                    <input type="text" [(ngModel)]="contact.email" #email>
                 </div>
                 <div class="d-flex justify-content-center align-items-center col-12" style="flex-direction: column;">
                     <p class="col-3" style="text-align: center; font-size:1.5em">Edit type of contact</p>
-                    <input type="text" [(ngModel)]="contact.type">
+                    <input type="text" [(ngModel)]="contact.type" #type>
                 </div>
             </div>
+
+            <!-- button -->
             <div class="d-flex justify-content-center mt-5">
-                <button class="btn text-light" style="font-size:1.3em; border-radius: 10px; background-color: #FF4C29" (click)="updateContactDetails()">Save changes</button>
+                <!-- save changes button -->
+                <button class="btn text-light" *ngIf="contact.id>0" style="font-size:1.3em; border-radius: 10px; background-color: #FF4C29" (click)="updateContactDetails()">Save changes</button>
+                <button class="btn text-light" *ngIf="contact.id == 0" style="font-size:1.3em; border-radius: 10px; background-color: #FF4C29" (click)="addNewContact(firstname.value, lastname.value, email.value, type.value)">Add</button>
+
+                <!-- add button -->
+                <!-- <button class="btn text-light" *ngIf="id==0" style="font-size:1.3em; border-radius: 10px; background-color: #FF4C29" (click)="updateContactDetails()">Add</button> -->
+            </div>
+            <div class="d-flex justify-content-center mt-5">
+                <button class="btn text-light" style="font-size:1.3em; border-radius: 10px; background-color: #FF4C29" (click)="deleteCurrentContact(contact.id)">Delete this contact</button>
             </div>
         </div>
     </div>

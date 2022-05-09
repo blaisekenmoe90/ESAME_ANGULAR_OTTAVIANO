@@ -19,12 +19,16 @@ export class MessageServiceService {
     return this.http.get<Message[]>('api/messages/' + userId);
   }
 
-  getRandomMessage():Observable<Answer>{
-    return this.http.get<Answer>('api/messages/' + (Math.floor(Math.random()* 45)+1));
-  }
-
   addMessage(message: Message):Observable<Message>{
     return this.http.post<Message>('api/messages', message)
+  }
+
+  getRandomMessage():Observable<Answer>{
+    return this.http.get<Answer>('api/answers/' + (Math.floor(Math.random()* 100)+1));
+  }
+
+  updateMessage(message: Message):Observable<Message>{
+    return this.http.put<Message>('api/messages/', message);
   }
 
 }

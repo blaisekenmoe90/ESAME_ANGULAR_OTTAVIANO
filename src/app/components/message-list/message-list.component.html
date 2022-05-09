@@ -12,7 +12,8 @@
 
 <!-- contatti -->
 <!-- se l'array contacts esiste -->
-<div *ngIf="contacts" style="display: flex; flex-wrap: wrap; gap: 2em; justify-content: center; background-color: #082032; padding: 5em 0em">
+<div *ngIf="contacts" style="display: flex; flex-wrap: wrap; gap: 2em; justify-content: center; padding: 5em 0em; background: rgb(18,73,115);
+background: linear-gradient(90deg, rgba(18,73,115,1) 40%, rgba(255,76,41,1) 100%);">
     <div *ngFor="let contact of contacts" style="flex-basis: 20%">
         <!-- la variabile [contact] corrisponde alla variabile che nel .ts dell'app-contact-item
         è segnata con il decoratore @Input(), la variabile "contact" invece corrisponde a quella 

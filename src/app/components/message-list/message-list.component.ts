@@ -21,7 +21,6 @@ export class MessageListComponent implements OnInit {
   getAllContacts(){
     this.contactService.getContacts().subscribe(data => {
       this.contacts = data;
-      console.log(this.contacts);
     });
   }
 }

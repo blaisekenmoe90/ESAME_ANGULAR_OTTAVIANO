@@ -13,8 +13,10 @@ import { Location } from '@angular/common';
 export class ContactDetailComponent implements OnInit {
 
   contact!:Contact;  
-  @Input() id: string = this.activatedRoute.snapshot.params['id']; // preleva il valore id dall'url e lo salva nella varabile id
- 
+    // preleva il valore id dall'url e lo salva nella varabile id
+  id: number =  Number(this.activatedRoute.snapshot.params['id']);
+  deleteContact?:any;
+  
   constructor(
     private activatedRoute: ActivatedRoute,
     private contactService:ContactServiceService,
@@ -22,14 +24,31 @@ export class ContactDetailComponent implements OnInit {
     ) { }
  
   ngOnInit(): void {
-    // chiama la funzione getContacts2 del contact service e fai il cast della variabile id
-    // prima di passarla come parametro di getContacts2() 
-    this.contactService.getContact(Number(this.id)).subscribe(data => {
-      this.contact = data; // salva nella variabile contact i dati ritornati dal service 
-      console.log(this.contact);
+    if(this.id==0){
+      this.contact = {
+        id: this.id,
+      } as Contact
+    }
+    else{
+      this.contactService.getContact(this.id).subscribe(data => {
+        this.contact = data; // salva nella variabile contact i dati ritornati dal service      
     })
+    }
+      
   }
   
+  addNewContact(firstname:string, lastname:string, email:string, type:string){
+    let newContact:Contact = {
+      firstname: firstname,
+      lastname: lastname,
+      email: email,
+      type: type,
+    }as Contact;
+    this.contactService.addContact(newContact).subscribe(data=>{
+      this.goBack();
+    })
+  }
+
   // torna alla pagina precedente
   goBack():void{
     this.location.back();
@@ -42,5 +61,8 @@ export class ContactDetailComponent implements OnInit {
     this.contactService.updateContact(this.contact).subscribe(data => {
       this.goBack();
     })
+  }
+
+  deleteCurrentContact(id:number):void{this.contactService.deleteContact(id).subscribe(()=>{this.goBack()});
   }
 }

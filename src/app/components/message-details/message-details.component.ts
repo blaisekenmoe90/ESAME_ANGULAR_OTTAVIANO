@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Contact } from 'src/app/interfaces/contact';
 import { MessageServiceService } from 'src/app/services/messageService/message-service.service';
 import { Message } from 'src/app/interfaces/message';
+import { Answer } from 'src/app/interfaces/answer';
 
 @Component({
   selector: 'app-message-details',
@@ -33,8 +34,8 @@ export class MessageDetailsComponent implements OnInit {
     // ottiene tutti i messaggi dal message service
     this.getMessages();
 
-    console.log(this.messages)
-  }  
+  }   // fine onInit
+
 
   // torna alla pagina precedente
   goBack():void{
@@ -56,19 +57,45 @@ export class MessageDetailsComponent implements OnInit {
     // il filter prende in input data e ne ritorna solo il valore desiderato, in questo 
     // caso userId, questo viene poi assegnato alla variabile id
     this.messages = data.filter(data => data.userId == this.id); 
+    for (let i = 0; i < this.messages.length; i++){
+      this.messages[i].deleted = false;
+    }
   })
-}
+  }
  
    add(text: string){
+     // crea l'oggetto message da passare in input 
      let message : Message = {
        userId: this.id,
        type: 'outcoming',
        message: text,
        deleted: false,
+
+        // cast dell'oggetto, è necessario perché nell'oggetto appena creato manca il parametro id , quindi normalmente non sarebbe possibile creare questo oggetto
      } as Message;
+
+     
+     // richiama il metodo addMessage del servizio 
      this.messageService.addMessage(message).subscribe(data=>{
-       this.messages.push(message);
-       console.log(message)
+       
+      this.messages.push(message); // inserisco nell'array il nuovo messaggio
+
+       this.messageService.getRandomMessage().subscribe(data2=>{
+        let answer : Message = { // creo un oggetto di tipo Message
+          type: 'incoming',
+          userId: this.id,
+          message: data2.answer,
+          deleted: false,
+        } as Message; // cast a Message
+        this.messageService.addMessage(answer).subscribe(data3=>{})
+         this.messages.push(answer); // inserisco nell'arrayla risposta
+       })
      })
    }
+
+   delete(message: Message){
+    message.deleted = true;
+    this.messageService.updateMessage(message).subscribe(data=>{
+    })
+    }
 }

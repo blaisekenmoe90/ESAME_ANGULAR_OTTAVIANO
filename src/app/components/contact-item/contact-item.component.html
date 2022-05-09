@@ -1,6 +1,6 @@
 <!-- se contact non è null -->
 <div class="d-flex" style="flex-basis: 40%" *ngIf="contact">
-    <div class="singleContact col-8 offset-2 d-flex justify-content-center">
+    <div class="shrink singleContact col-8 offset-2 d-flex justify-content-center">
         <!-- questo contact si riferisce a quello del .ts di questo componente,
             che a sua volta si riferisce all'ngFor del contact-list.component.html -->
         <img [routerLink]="['/contact', contact.id]" src="{{contact.imageUrl}}">

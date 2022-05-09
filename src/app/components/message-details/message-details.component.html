@@ -17,15 +17,31 @@
 <div style="background-color: #252525; padding-top: 5em; display: flex; gap:2em;
     flex-direction: column; margin-top:7em; padding-bottom: 100%;">
     <!-- [class.outcoming]="element.type=='outcoming'" -- significa:"attiva la classe .outcoming se element.type è == a outcoming" -->
-    <div *ngFor="let element of messages" class="d-flex col-8 offset-2" [class.outcoming]="element.type=='outcoming'">
+    <div *ngFor="let element of messages" class="d-flex col-8 offset-2" [class.outcoming]="element.type=='outcoming'" [class.incoming]="element.type=='incoming'">
 
-
-
-        <div [class.greyIn]="element.type=='incoming'" [class.greyOut]="element.type=='outcoming'" style="height: 5em;
-            align-items:center; justify-content:center; border-radius: 10px;" class="d-flex
-            col-3">
-            {{element.message}}
+        <div [class.greyIn]="element.type=='incoming'" [class.greyOut]="element.type=='outcoming'" class="allMessages d-flex
+        col-3">
+            <p class="col-10" *ngIf="element.deleted == true || null || undefined">Hai eliminato questo messaggio</p>
+            <p class="col-10" *ngIf="element.deleted != true">{{element.message}}</p>
+            <div class="col-2" *ngIf="element.type == 'outcoming'">
+                <button class="btn" (click)="delete(element)"><i class="bi bi-x-circle text-danger h5"></i></button>
+            </div>
         </div>
+
+        <!-- <div *ngIf="element.deleted == true" [class.greyIn]="element.type=='incoming'" [class.greyOut]="element.type=='outcoming'" class="allMessages d-flex
+        col-3">
+            deleted
+            <div *ngIf="element.type == 'outcoming'">
+                <button class="btn" (click)="delete(element)"><i class="bi bi-x-circle"></i></button>
+            </div>
+        </div>
+
+        <div *ngIf="element.deleted == false" [class.greyIn]="element.type=='incoming'" [class.greyOut]="element.type=='outcoming'" class="allMessages d-flex col-3">
+            {{element.message}}
+            <div *ngIf="element.type == 'outcoming'">
+                <button class="btn" (click)="delete(element)"><i class="bi bi-x-circle"></i></button>
+            </div>
+        </div> -->
     </div>
 </div>
 
