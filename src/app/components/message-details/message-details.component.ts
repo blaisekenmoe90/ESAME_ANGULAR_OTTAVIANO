@@ -98,4 +98,10 @@ export class MessageDetailsComponent implements OnInit {
     this.messageService.updateMessage(message).subscribe(data=>{
     })
     }
+
+    searchAMessage(message: string):void {
+      this.messageService.searchMessage(message).subscribe(response => {
+        this.messages = response.filter(data => data.id == this.id);
+      })
+    }
 }

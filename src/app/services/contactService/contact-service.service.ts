@@ -29,4 +29,12 @@ export class ContactServiceService {
   deleteContact(id:number):Observable<Contact>{
     return this.http.delete<Contact>('api/contacts/' + id);
   }
+
+  searchContactByFirstname(search: string):Observable<Contact[]>{
+    return this.http.get<Contact[]>('api/contacts/?firstname=' + search);
+  }
+
+  searchContactByLastname(search: string):Observable<Contact[]>{
+    return this.http.get<Contact[]>('api/contacts/?lastname=' + search);
+  }
 }

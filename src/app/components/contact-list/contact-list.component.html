@@ -1,19 +1,3 @@
-<!-- contacts service-->
-<!--
-
-<button class="btn btn-dark" (click)="getAllContacts()">getAllContacts</button>
-<button class="btn btn-dark" (click)="getOneContact()">getOneContact</button>
-<div>
-    <input type="text" [(ngModel)]="contact.message">
-    <button (click)="updateContacts()">insertNewContact</button>
-</div>
--->
-<!-- message service  -->
-<!--
-<button (click)="getAllMessages()">getAllMessages</button>
-<button (click)="getOneAnswer()">getOneAnswer</button>
-<button (click)="addNewMessage()">addMessage</button> -->
-
 <!-- NAVBAR -->
 <div class="col-12" style="background-color: #202020;">
     <nav class="navbar container" style="height: 7em;">
@@ -23,7 +7,7 @@
         </div>
 
 
-        <a class="navbar-brand ms-5 text-light" style="font-size: 1.5em">Rubrica <i class="bi bi-book"></i></a>
+        <a class="navbar-brand ms-5 text-light" style="font-size: 1.5em">Address book <i class="bi bi-book"></i></a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
         </div>
 
@@ -35,18 +19,45 @@
 </div>
 
 
-<div style="background: rgb(18,73,115);
-background: linear-gradient(90deg, rgba(18,73,115,1) 40%, rgba(255,76,41,1) 100%);">
+<div style="background: linear-gradient(90deg, rgba(18,73,115,1) 40%, rgba(255,76,41,1) 100%);">
+
+    <div class="d-flex align-items-center col-12 py-5 gap-3">
+        <!-- ad ogni input dell'utente richiama la funzione searchContactByFirstname() e passa in input il valore dell'input salvato con #search -->
+        <input type="text" id="searchFirst" placeholder="search by first name" class="col-2 offset-4 shadow" #searchFirst (input)="searchContactByFirstname(searchFirst.value)">
+        <input type="text" id="searchLast" placeholder="search by last name" class="col-2 shadow" #searchLast (input)="searchContactByLastname(searchLast.value)">
+    </div>
     <!-- contatti -->
     <!-- se l'array contacts esiste -->
-    <div *ngIf="contacts" style="display: flex; flex-wrap: wrap; gap: 2em; justify-content: center;padding: 5em 0em">
-        <div *ngFor="let contact of contacts" style="flex-basis: 20%">
-            <!-- la variabile [contact] corrisponde alla variabile che nel .ts dell'app-contact-item
-        è segnata con il decoratore @Input(), la variabile "contact" invece corrisponde a quella 
-        inizializzata nell'*ngFor -->
-            <!-- in pratica questa riga dice "inserisci il contact dell'ngFor nella variabile contact 
-            del .ts del componente app-contact-item" -->
-            <app-contact-item [contact]="contact"></app-contact-item>
+    <div *ngIf="contacts" class="col-12">
+
+
+        <div class="col-12">
+            <h1 class="col-12 text-center text-light" style="letter-spacing: 0.10em">Students</h1>
+            <div *ngFor="let contact of contacts" class="col-8 offset-2 ">
+                <div *ngIf="contact.type == 'student'" class="col-12 my-4">
+                    <!-- la variabile [contact] corrisponde alla variabile che nel .ts dell'app-contact-item
+                è segnata con il decoratore @Input(), la variabile "contact" invece corrisponde a quella 
+                inizializzata nell'*ngFor -->
+                    <!-- in pratica questa riga dice "inserisci il contact dell'ngFor nella variabile contact 
+                    del .ts del componente app-contact-item" -->
+                    <app-contact-item [contact]="contact"></app-contact-item>
+                </div>
+            </div>
         </div>
+
+        <div class="col-12 d-flex flex-wrap mt-5">
+            <h1 class="col-12 text-center text-light" style="letter-spacing: 0.10em">Teachers</h1>
+            <div *ngFor="let contact of contacts" class="col-8 offset-2">
+                <div *ngIf="contact.type == 'teacher'" class="col-12 my-3">
+                    <!-- la variabile [contact] corrisponde alla variabile che nel .ts dell'app-contact-item
+            è segnata con il decoratore @Input(), la variabile "contact" invece corrisponde a quella 
+            inizializzata nell'*ngFor -->
+                    <!-- in pratica questa riga dice "inserisci il contact dell'ngFor nella variabile contact 
+                del .ts del componente app-contact-item" -->
+                    <app-contact-item [contact]="contact"></app-contact-item>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>

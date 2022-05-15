@@ -3,7 +3,7 @@
     <div class="shrink singleContact col-8 offset-2 d-flex justify-content-center">
         <!-- questo contact si riferisce a quello del .ts di questo componente,
             che a sua volta si riferisce all'ngFor del contact-list.component.html -->
-        <img [routerLink]="['/contact', contact.id]" src="{{contact.imageUrl}}">
+        <img id="profilePic" [routerLink]="['/contact', contact.id]" src="{{contact.imageUrl}}">
 
         <div>
             <p style="text-align: center; font-size: 1.2em" class="col-12 mt-4">{{contact.firstname + ' ' + contact.lastname}}</p>

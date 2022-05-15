@@ -31,4 +31,7 @@ export class MessageServiceService {
     return this.http.put<Message>('api/messages/', message);
   }
 
+  searchMessage(search: string):Observable<Message[]>{
+    return this.http.get<Message[]>('api/messages/?message=' + search)
+  }
 }

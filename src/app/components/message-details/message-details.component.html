@@ -13,9 +13,14 @@
     </nav>
 </div>
 
+
+
 <!-- CHAT -->
 <div style="background-color: #252525; padding-top: 5em; display: flex; gap:2em;
     flex-direction: column; margin-top:7em; padding-bottom: 100%;">
+    <div class="col-12 mb-5">
+        <input placeholder="Search a message" class="col-4 offset-4" id="searchMessageBar" #searchMessage type="text" (input)="searchAMessage(searchMessage.value)">
+    </div>
     <!-- [class.outcoming]="element.type=='outcoming'" -- significa:"attiva la classe .outcoming se element.type è == a outcoming" -->
     <div *ngFor="let element of messages" class="d-flex col-8 offset-2" [class.outcoming]="element.type=='outcoming'" [class.incoming]="element.type=='incoming'">
 

@@ -15,10 +15,10 @@ import { ActivatedRoute } from '@angular/router';
 export class ContactListComponent implements OnInit {
 
   message: Message = {
-    id: 27364,
-    userId: 49875239874, 
+    id: 0,
+    userId: 0, 
     type: 'incoming', 
-    message: 'ciao tutttru'
+    message: ''
   }
 
   contacts: Contact[] = [];
@@ -55,6 +55,17 @@ export class ContactListComponent implements OnInit {
       .subscribe(data => {
       })
     this.getAllMessages();
+  }
+
+  searchContactByFirstname(search: string):void {
+    this.contactService.searchContactByFirstname(search).subscribe(data => {
+      this.contacts = data;
+    })
+  }
+  searchContactByLastname(search: string):void {
+    this.contactService.searchContactByLastname(search).subscribe(data => {
+      this.contacts = data;
+    })
   }
   
 

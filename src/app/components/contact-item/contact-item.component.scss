@@ -14,3 +14,12 @@
         border-radius: 10px;
     }
 }
+
+#profilePic {
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover {
+        background-color: white;
+        transform: scale(1.1);
+    }
+}
